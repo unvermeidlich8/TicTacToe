@@ -3,8 +3,9 @@ class TicTacToe:
         self.board = [' '] * 9
         self.current_player = 'X'
 
+
     def draw_board(self):
-
-
-
-game = TicTacToe
+        print('-------------')
+        for i in range(3):
+            print('|', self.board[i * 3], '|', self.board[i * 3 + 1], '|', self.board[i * 3 + 2], '|')
+            print('-------------')

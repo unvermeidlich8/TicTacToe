@@ -1,4 +1,6 @@
+import sys
 import unittest
+from io import StringIO
 
 from main import TicTacToe
 
@@ -11,7 +13,23 @@ class TicTacToeTest(unittest.TestCase):
 
 
     def test_draw_board(self):
+        game = TicTacToe()
+        game.board = ['X', 'O', 'X', 'O', ' ', ' ', ' ', ' ', ' ']
+        expected_output = '''-------------
+| X | O | X |
+-------------
+| O |   |   |
+-------------
+|   |   |   |
+-------------'''
 
+        capture_output = StringIO()
+        sys.stdout = capture_output
+        game.draw_board()
+        sys.stdout = sys.__stdout__
+        output = capture_output.getvalue().strip()
+        print(output)
+        self.assertEqual(output, expected_output)
 
 
 
