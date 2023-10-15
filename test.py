@@ -1,7 +1,7 @@
 import sys
 import unittest
-from unittest.mock import patch
 from io import StringIO
+from unittest.mock import patch
 
 from main import TicTacToe
 
@@ -63,12 +63,27 @@ class TicTacToeTest(unittest.TestCase):
 
 
     def test_check_winner(self):
-        self.game.board = ['X', 'X', 'X',
-                           'O', ' ', 'O',
-                           ' ', 'O', ' ']
+        self.game.board = ['O', 'X', 'O',
+                           'O', 'X', 'O',
+                           ' ', 'X', ' ']
         self.assertTrue(self.game.check_winner())
 
-    def test_play_game(self):
+    @patch('builtins.input', side_effect=['8'])
+    def test_play_game(self, mock_make_a_move):
+        self.game.board = ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', ' ']
+        expected_board = ['X', 'O', 'X', 'O', 'X', 'X', 'O', 'X', 'O']
+        self.game.current_player = 'O'
+
+        capture_output = StringIO()
+        sys.stdout = capture_output
+        self.game.play_game()
+        sys.stdout = sys.__stdout__
+        output = capture_output.getvalue().split('\n')
+        expected_output = "Draw!"
+
+        self.assertEqual(output[len(output)-2], expected_output)
+
+
 
 
 if __name__ == '__main__':
