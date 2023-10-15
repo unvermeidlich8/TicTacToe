@@ -43,6 +43,7 @@ class TicTacToeTest(unittest.TestCase):
         self.assertFalse(game.check_move(-1))
         self.assertFalse(game.check_move(9))
 
+    def test_make_a_move(self):
 
 
 

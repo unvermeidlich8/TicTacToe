@@ -17,3 +17,6 @@ class TicTacToe:
             print("This position is already taken. Please choose another position")
             return False
         return True
+
+    def make_a_move(self):
+
