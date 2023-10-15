@@ -25,3 +25,7 @@ class TicTacToe:
         else:
             self.make_a_move()
 
+
+    def check_winner(self):
+
+

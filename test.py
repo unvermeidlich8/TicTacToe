@@ -60,7 +60,7 @@ class TicTacToeTest(unittest.TestCase):
         self.assertEqual(self.game.board, expected_board)
 
 
-
+    def test_check_winner(self):
 
 
 if __name__ == '__main__':
