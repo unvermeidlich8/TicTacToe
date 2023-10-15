@@ -32,6 +32,9 @@ class TicTacToeTest(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
 
+    def test_check_move(self,position):
+
+
 
 
 if __name__ == '__main__':
