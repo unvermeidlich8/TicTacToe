@@ -68,6 +68,8 @@ class TicTacToeTest(unittest.TestCase):
                            ' ', 'O', ' ']
         self.assertTrue(self.game.check_winner())
 
+    def test_play_game(self):
+
 
 if __name__ == '__main__':
     unittest.main()
