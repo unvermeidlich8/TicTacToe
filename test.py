@@ -4,7 +4,10 @@ from main import TicTacToe
 
 
 class TicTacToeTest(unittest.TestCase):
-
+    def test_create_empty_board(self):
+        game = TicTacToe()
+        expected_board = [' '] * 9
+        self.assertEqual(game.board, expected_board)
 
 
 
