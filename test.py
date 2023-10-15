@@ -50,7 +50,9 @@ class TicTacToeTest(unittest.TestCase):
     @patch('builtins.input', side_effect=['1'])
     def test_make_a_move_valid(self, mock_input):
         self.game.make_a_move()
-        expected_board = [' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        expected_board = [' ', 'X', ' ',
+                          ' ', ' ', ' ',
+                          ' ', ' ', ' ']
         self.assertEqual(self.game.board, expected_board)
 
     @patch('builtins.input', side_effect=['9', '9', '9', '1'])
@@ -61,6 +63,10 @@ class TicTacToeTest(unittest.TestCase):
 
 
     def test_check_winner(self):
+        self.game.board = ['X', 'X', 'X',
+                           'O', ' ', 'O',
+                           ' ', 'O', ' ']
+        self.assertTrue(self.game.check_winner())
 
 
 if __name__ == '__main__':
