@@ -1,0 +1,42 @@
+Feature: TicTacToe Game
+
+Scenario: Drawing the game board
+    Given an empty board
+    When we draw the board
+    Then we expect the following output:
+    """
+    -------------
+    |   |   |   |
+    -------------
+    |   |   |   |
+    -------------
+    |   |   |   |
+    -------------
+    """
+
+Scenario: Making a valid move
+    Given a TicTacToe game
+    When player makes a valid move
+    Then we expect the board to be updated correctly
+    | X |   |   |
+    |   |   |   |
+    |   |   |   |
+
+Scenario: Making invalid moves
+    Given a TicTacToe game
+    When player makes invalid moves
+    Then we expect the board to be updated correctly
+    |   |   |   |
+    |   |   |   |
+    |   |   |   |
+
+Scenario: Checking for a winner
+    Given a TicTacToe game with a winning state
+    Then we expect the game to have a winner
+
+Scenario: Playing the game for a draw
+    Given a TicTacToe game with a draw state
+    Then we expect the game to end in a draw
+    """
+    Draw!
+    """
