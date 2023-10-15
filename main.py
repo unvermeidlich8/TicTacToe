@@ -19,4 +19,9 @@ class TicTacToe:
         return True
 
     def make_a_move(self):
+        pos = int(input(f"Player {self.current_player}, please choose position (0-8): "))
+        if self.check_move(pos):
+            self.board[pos] = self.current_player
+        else:
+            self.make_a_move()
 

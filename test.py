@@ -1,5 +1,6 @@
 import sys
 import unittest
+from unittest.mock import patch
 from io import StringIO
 
 from main import TicTacToe
@@ -10,7 +11,6 @@ class TicTacToeTest(unittest.TestCase):
         game = TicTacToe()
         expected_board = [' '] * 9
         self.assertEqual(game.board, expected_board)
-
 
     def test_draw_board(self):
         game = TicTacToe()
@@ -31,7 +31,6 @@ class TicTacToeTest(unittest.TestCase):
         print(output)
         self.assertEqual(output, expected_output)
 
-
     def test_check_move(self):
         game = TicTacToe()
 
@@ -43,7 +42,24 @@ class TicTacToeTest(unittest.TestCase):
         self.assertFalse(game.check_move(-1))
         self.assertFalse(game.check_move(9))
 
-    def test_make_a_move(self):
+    def setUp(self):
+        self.game = TicTacToe()
+        self.game.current_player = 'X'
+        self.game.board = [' '] * 9
+
+    @patch('builtins.input', side_effect=['1'])
+    def test_make_a_move_valid(self, mock_input):
+        self.game.make_a_move()
+        expected_board = [' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.assertEqual(self.game.board, expected_board)
+
+    @patch('builtins.input', side_effect=['9', '9', '9', '1'])
+    def test_make_a_move_with_invalid_positions(self, mock_input):
+        self.game.make_a_move()
+        expected_board = [' ', 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+        self.assertEqual(self.game.board, expected_board)
+
+
 
 
 
