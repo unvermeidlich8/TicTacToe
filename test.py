@@ -32,7 +32,16 @@ class TicTacToeTest(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
 
-    def test_check_move(self,position):
+    def test_check_move(self):
+        game = TicTacToe()
+
+        # Проверка допустимого хода
+        self.assertTrue(game.check_move(0))
+        self.assertTrue(game.check_move(4))
+
+        # Проверка недопустимого хода из-за некорректной позиции
+        self.assertFalse(game.check_move(-1))
+        self.assertFalse(game.check_move(9))
 
 
 
